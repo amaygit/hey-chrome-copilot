@@ -1,0 +1,6 @@
+.env
+node_modules/
+*.log
+.data/
+exports/
+extension/connection.local.json

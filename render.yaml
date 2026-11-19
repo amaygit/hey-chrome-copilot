@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: hey-chrome-copilot
+    runtime: node
+    plan: free
+    buildCommand: tar -xzf hey-chrome-source.tar.gz --strip-components=1 && node --check server/index.mjs
+    startCommand: node server/index.mjs
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: HOST
+        value: 0.0.0.0
+      - key: HIGH_ACCURACY
+        value: "true"
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_SEARCH_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_VERIFY_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_VERIFY_API_KEY
+        sync: false
+      - key: BACKEND_TOKEN
+        sync: false
+      - key: ACCESS_MEMBERS_JSON
+        value: "[]"
